@@ -1,0 +1,106 @@
+:root {
+  --text-color: #ffffff;
+  --bg-glass: rgba(18, 18, 18, 0.5);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --primary: #3b82f6;
+  --blur-strength: blur(10px);
+}
+
+/* Reset & Base Styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('/assets/wallpaper1.webp') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+/* Card Container (like CardContainer in React) */
+.card-container {
+  position: relative;
+  perspective: 1000px;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 420px;
+}
+
+/* 3D Body Wrapper (like CardBody) */
+.card-body {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: var(--blur-strength);
+  -webkit-backdrop-filter: var(--blur-strength);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-out;
+  transform-style: preserve-3d;
+  padding: 1.5rem;
+}
+
+/* On hover slightly shrink */
+.card-container:hover .card-body {
+  transform: scale(0.98);
+}
+
+/* Card Item (like CardItem) */
+.card-item {
+  transform-style: preserve-3d;
+}
+
+/* Example: Depth effect using data-translateZ attribute */
+.card-item[data-translatez] {
+  transform: translateZ(var(--z, 0px));
+}
+
+/* Set inline style for dynamic translateZ (via JS) */
+.card-item[style*="translateZ"] {
+  will-change: transform;
+}
+
+/* Inputs */
+.card-body input,
+.card-body select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-glass);
+  border-radius: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.card-body button {
+  padding: 0.75rem;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card-body button:hover {
+  background-color: #2563eb;
+}
+
+/* Title Style */
+.card-title {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Centered stack of cards */
+.cards-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
